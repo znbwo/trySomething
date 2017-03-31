@@ -6,13 +6,14 @@ import java.io.IOException;
 public class T {
     int num;
 
-    public T() {
+    public T() throws InterruptedException {
         new Thread(new Runnable() {
             @Override
             public void run() {
                 say();
             }
         }).start();
+        Thread.sleep(1000);
         this.num = 9;
     }
 
@@ -20,7 +21,7 @@ public class T {
         System.out.println(this.num);
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, InterruptedException {
         T t = new T();
         System.out.println(t.num);
 
